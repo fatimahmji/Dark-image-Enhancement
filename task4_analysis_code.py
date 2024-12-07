@@ -101,7 +101,7 @@ def analyze_execution(image_paths):
 
 # Main Function
 if __name__ == "__main__":
-    dataset_path = "/Users/fatimah/Desktop/level 9/parallel computing/dark images/ExDark"
+    dataset_path = "/Users/fatimah/dark images/ExDark"
     
     # Load image paths
     def load_image_paths(dataset_path):

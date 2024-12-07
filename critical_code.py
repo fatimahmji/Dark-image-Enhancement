@@ -1,3 +1,13 @@
+import cv2
+import os
+import threading
+from concurrent.futures import ThreadPoolExecutor
+from timeit import default_timer as timer
+
+
+lock = threading.Lock()
+displayed_images = set() 
+
 # Function to process images (with critical section for race condition)
 def process_image_with_critical_section(img_path):
     global displayed_images
@@ -9,7 +19,7 @@ def process_image_with_critical_section(img_path):
 
     folder_name = os.path.basename(os.path.dirname(img_path))
 
-    # Lock for critical section
+    # Lock for critical section to ensure thread-safe access
     with lock:
         if folder_name not in displayed_images:
             displayed_images.add(folder_name)  # Safe access to shared resource
